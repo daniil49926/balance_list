@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  pg_db:
+    image: postgres:15.4-alpine
+    container_name: bl-pg
+    hostname: db
+    restart: always
+    environment:
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_DB: ${PG_MAIN_DB}
+    ports:
+      - '${PG_PORT_HOST}:${PG_PORT_CONTAINER}'
+    volumes:
+      - pg_db:/var/lib/postgresql/data
+
+  web:
+    container_name: bl
+    build: .
+    command: sh -c "python app/app.py"
+    environment:
+      APPLICATION_HOST: ${APPLICATION_HOST}
+      APPLICATION_PORT: ${APPLICATION_PORT}
+      PG_DSN: ${PG_DSN}
+    ports:
+      - '${APPLICATION_PORT}:${APPLICATION_PORT}'
+    volumes:
+      - .:/app
+    depends_on:
+      - pg_db
+
+volumes:
+  pg_db:
+    driver: local
