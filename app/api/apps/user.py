@@ -2,6 +2,7 @@ from datetime import datetime
 
 from aiohttp import web
 from asyncpg import UniqueViolationError
+
 from models import User
 
 

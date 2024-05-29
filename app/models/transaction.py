@@ -2,9 +2,10 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Any
 
-from core import InvalidTransaction, LowBalanced, db
 from sqlalchemy import DECIMAL, VARCHAR, BigInteger, Column, DateTime, ForeignKey
 from sqlalchemy.sql import functions
+
+from core import InvalidTransaction, LowBalanced, db
 
 
 class Transaction(db.Model):

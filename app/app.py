@@ -1,6 +1,7 @@
 import os
 
 from aiohttp import web
+
 from core.load_env import load_environ
 
 load_environ(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

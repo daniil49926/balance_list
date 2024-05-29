@@ -1,9 +1,10 @@
 from datetime import datetime
 from typing import Any
 
-from core import db
 from sqlalchemy import DECIMAL, VARCHAR, BigInteger, CheckConstraint, Column, DateTime
 from sqlalchemy.sql import and_, case, functions
+
+from core import db
 
 
 class User(db.Model):
