@@ -1,7 +1,7 @@
 [tool.ruff]
 line-length = 88
 show-fixes = true
-src = ["hurricaneapi"]
+src = ["app"]
 
 [tool.ruff.lint]
 select = [
